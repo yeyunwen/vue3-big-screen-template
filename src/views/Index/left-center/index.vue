@@ -46,7 +46,7 @@ const fetchDataApi = (): Promise<InjectData> => {
 
 const { showBig } = useShowBig({
   chartRef,
-  title: 'left-top',
+  title: 'left-cneter',
   bigOption,
 })
 
