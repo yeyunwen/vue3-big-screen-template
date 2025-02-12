@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, useTemplateRef, watch, nextTick } from 'vue'
-import LeftTop from './components/LeftTop/index.vue'
+import LeftTop from './LeftTop/index.vue'
 import { useAppStore } from '@/stores/modules/app'
 import echarts, { getBigFontSizeOption } from '@/echarts'
 import { merge } from 'es-toolkit'

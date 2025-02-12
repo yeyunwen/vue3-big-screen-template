@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Layout from '@/layout/index.vue'
 import Index from '@/views/Index/index.vue'
-
 console.log('BASE_URL', import.meta.env.BASE_URL)
 
 const router = createRouter({
@@ -8,8 +8,16 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Index,
+      name: 'layout',
+      component: Layout,
+      redirect: '/',
+      children: [
+        {
+          path: '/',
+          name: 'index',
+          component: Index,
+        },
+      ],
     },
   ],
 })
