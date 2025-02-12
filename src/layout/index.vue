@@ -1,5 +1,31 @@
 <script setup lang="ts">
+import { useTemplateRef, nextTick, watch, ref } from 'vue'
+import { useAppStore } from '@/stores/modules/app'
+import echarts from '@/echarts'
+import { merge } from 'es-toolkit'
 import Header from './components/header.vue'
+
+const appStore = useAppStore()
+
+const showBig = ref(false)
+const bigChartRef = useTemplateRef<HTMLElement>('bigChart')
+
+const handleClose = () => {
+  showBig.value = false
+}
+
+watch(
+  () => appStore.chartData,
+  (newVal) => {
+    if (newVal.option) {
+      showBig.value = true
+      nextTick(() => {
+        const chart = echarts.init(bigChartRef.value!)
+        chart.setOption(merge(newVal.option!, appStore.chartData.bigOption!))
+      })
+    }
+  },
+)
 </script>
 
 <template>
@@ -9,6 +35,10 @@ import Header from './components/header.vue'
     </div>
     <div class="main-wrapper">
       <router-view />
+    </div>
+    <div v-if="showBig" :title="appStore.chartData.title">
+      <button @click="handleClose">关闭</button>
+      <div ref="bigChart" id="dialog-char" style="width: 600px; height: 500px"></div>
     </div>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, useTemplateRef, watch } from 'vue'
 import { type ECOption, useEchart } from '@/echarts'
+import { cloneDeep } from 'es-toolkit'
 
 defineOptions({
   name: 'Echart',
@@ -17,7 +18,7 @@ const { setOption, getInputOption, initChart } = useEchart(chartRef)
 
 // 渲染图表
 const render = () => {
-  setOption(props.option)
+  setOption(cloneDeep(props.option))
 }
 
 onMounted(() => {
@@ -28,8 +29,11 @@ onMounted(() => {
 watch(
   () => props.option,
   () => {
+    console.log('change props.option', props.option)
+
     render()
   },
+  { deep: true },
 )
 
 // 暴露方法

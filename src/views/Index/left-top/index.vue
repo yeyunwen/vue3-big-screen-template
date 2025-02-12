@@ -2,8 +2,9 @@
 import Echart from '@/components/Echart/index.vue'
 import { onMounted, ref } from 'vue'
 import { type ECOption } from '@/echarts'
-import { baseOption } from './option'
+import { baseOption, bigOption } from './option'
 import { merge } from 'es-toolkit'
+import { useShowBig } from '@/hooks/useShowBig'
 
 defineOptions({
   name: 'LeftTop',
@@ -13,6 +14,7 @@ type InjectData = {
   yList: number[]
 }
 
+const chartRef = ref()
 const chartOption = ref<ECOption>({})
 
 // 注入业务数据
@@ -42,6 +44,16 @@ const fetchDataApi = (): Promise<InjectData> => {
   })
 }
 
+const { showBig } = useShowBig({
+  chartRef,
+  title: 'title',
+  bigOption,
+})
+
+const clickBig = () => {
+  showBig()
+}
+
 onMounted(async () => {
   const data = await fetchDataApi()
   chartOption.value = createChartOption(data)
@@ -51,10 +63,10 @@ onMounted(async () => {
 <template>
   <div class="left-top">
     <div class="button-wrap">
-      <!-- <button @click="clickBig">放大</button> -->
+      <button @click="clickBig">放大</button>
     </div>
     <div class="chart-wrap">
-      <Echart :option="chartOption" />
+      <Echart ref="chartRef" :option="chartOption" />
     </div>
   </div>
 </template>
