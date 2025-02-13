@@ -5,6 +5,7 @@ import { type ECOption } from '@/echarts'
 import { baseOption, bigOption } from './option'
 import { merge } from 'es-toolkit'
 import { useShowBig } from '@/hooks/useShowBig'
+import BorderBox1 from '@/components/border-box-1/index.vue'
 
 defineOptions({
   name: 'LeftTop',
@@ -14,6 +15,7 @@ type InjectData = {
   yList: number[]
 }
 
+const title = 'LeftTop'
 const chartRef = ref()
 const chartOption = ref<ECOption>({})
 
@@ -46,7 +48,7 @@ const fetchDataApi = (): Promise<InjectData> => {
 
 const { showBig } = useShowBig({
   chartRef,
-  title: 'left-top',
+  title,
   bigOption,
 })
 
@@ -66,23 +68,21 @@ onMounted(async () => {
 
 <template>
   <div class="left-top">
-    <div class="button-wrap">
-      <button @click="clickBig">放大</button>
-    </div>
-    <div class="chart-wrap">
-      <Echart ref="chartRef" :option="chartOption" :on-resize="onResize" />
-    </div>
+    <border-box-1 :title="title">
+      <template #right>
+        <button @click="clickBig">放大</button>
+      </template>
+      <div class="chart-wrap">
+        <Echart ref="chartRef" :option="chartOption" :on-resize="onResize" />
+      </div>
+    </border-box-1>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .left-top {
   width: 100%;
   height: 100%;
-  .button-wrap {
-    display: flex;
-    justify-content: flex-end;
-  }
   .chart-wrap {
     width: 100%;
     height: calc(100% - 32px);
