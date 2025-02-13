@@ -33,8 +33,6 @@ onMounted(() => {
 watch(
   () => props.option,
   () => {
-    console.log('change props.option', props.option)
-
     render()
   },
   { deep: true },

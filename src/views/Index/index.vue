@@ -55,6 +55,7 @@ $right-gap: vh(10);
     width: $left-width;
     height: vh(380);
     border: vw(1) solid red;
+    transition: all 0.1s; // 过渡时间最好和echart内resize的防抖时间一致
   }
   .left-center-wrap {
     margin-bottom: $left-gap;

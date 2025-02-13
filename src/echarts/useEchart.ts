@@ -1,6 +1,7 @@
 import { onBeforeUnmount, onMounted, type Ref } from 'vue'
 import echarts, { type ECOption } from '.'
 import { CanvasRenderer, SVGRenderer } from 'echarts/renderers'
+import { debounce } from 'es-toolkit'
 
 interface HookOption {
   renderer?: 'canvas' | 'svg'
@@ -51,12 +52,12 @@ export const useEchart = (chartRef: Ref<HTMLElement | null>, hookOption?: HookOp
   }
 
   onMounted(() => {
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', debounce(handleResize, 100))
   })
 
   onBeforeUnmount(() => {
     chartInstance?.dispose()
-    window.removeEventListener('resize', handleResize)
+    window.removeEventListener('resize', debounce(handleResize, 100))
   })
 
   return {
