@@ -3,15 +3,17 @@ import echarts, { type ECOption } from '.'
 import { CanvasRenderer, SVGRenderer } from 'echarts/renderers'
 
 interface HookOption {
-  renderer: 'canvas' | 'svg'
+  renderer?: 'canvas' | 'svg'
+  onResize?: (chartInstance: echarts.ECharts) => void
 }
 
 const defaultOption: HookOption = {
   renderer: 'canvas',
+  onResize: () => {},
 }
 
 export const useEchart = (chartRef: Ref<HTMLElement | null>, hookOption?: HookOption) => {
-  const { renderer } = Object.assign(defaultOption, hookOption)
+  const { renderer, onResize } = Object.assign(defaultOption, hookOption)
   echarts.use(renderer === 'canvas' ? CanvasRenderer : SVGRenderer)
 
   let chartInstance: echarts.ECharts | null = null
@@ -26,7 +28,6 @@ export const useEchart = (chartRef: Ref<HTMLElement | null>, hookOption?: HookOp
       throw new Error('chartInstance is not initialized')
     }
     inputOption = option
-    console.log('option', option)
     showLoading()
     chartInstance.setOption(option)
     hideLoading()
@@ -45,6 +46,7 @@ export const useEchart = (chartRef: Ref<HTMLElement | null>, hookOption?: HookOp
   }
 
   const handleResize = () => {
+    onResize?.(chartInstance!)
     chartInstance?.resize()
   }
 

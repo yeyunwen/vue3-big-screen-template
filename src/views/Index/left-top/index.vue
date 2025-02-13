@@ -31,7 +31,7 @@ const createChartOption = (data: InjectData): ECOption => {
     ],
   }
 
-  return merge(baseOption, exctrOption)
+  return merge(baseOption(), exctrOption)
 }
 
 // 父容器在使用时，只需要注入数据
@@ -54,6 +54,10 @@ const clickBig = () => {
   showBig()
 }
 
+const onResize = () => {
+  chartOption.value = merge(chartOption.value, baseOption())
+}
+
 onMounted(async () => {
   const data = await fetchDataApi()
   chartOption.value = createChartOption(data)
@@ -66,7 +70,7 @@ onMounted(async () => {
       <button @click="clickBig">放大</button>
     </div>
     <div class="chart-wrap">
-      <Echart ref="chartRef" :option="chartOption" />
+      <Echart ref="chartRef" :option="chartOption" :on-resize="onResize" />
     </div>
   </div>
 </template>

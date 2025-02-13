@@ -1,0 +1,9 @@
+@use './until.scss' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: vw(14);
+}

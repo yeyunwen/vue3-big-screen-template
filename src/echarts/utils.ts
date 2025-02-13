@@ -1,5 +1,5 @@
 import type { ECOption } from './library'
-
+import { fitChartSize } from '@/utils'
 export const DEFAULT = {
   fontSize: 12,
   color: '#fff',
@@ -15,16 +15,16 @@ export const BIG = {
 export const getBigFontSizeOption = (fontSize = BIG.fontSize): ECOption => {
   return {
     xAxis: {
-      nameTextStyle: { fontSize },
-      axisLabel: { fontSize },
+      nameTextStyle: { fontSize: fitChartSize(fontSize) },
+      axisLabel: { fontSize: fitChartSize(fontSize) },
     },
     yAxis: {
-      nameTextStyle: { fontSize },
-      axisLabel: { fontSize },
+      nameTextStyle: { fontSize: fitChartSize(fontSize) },
+      axisLabel: { fontSize: fitChartSize(fontSize) },
     },
-    series: [{ label: { fontSize } }],
-    legend: { textStyle: { fontSize } },
-    tooltip: { textStyle: { fontSize } },
+    series: [{ label: { fontSize: fitChartSize(fontSize) } }],
+    legend: { textStyle: { fontSize: fitChartSize(fontSize) } },
+    tooltip: { textStyle: { fontSize: fitChartSize(fontSize) } },
   }
 }
 

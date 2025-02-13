@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, useTemplateRef, watch } from 'vue'
-import { type ECOption, useEchart } from '@/echarts'
+import echarts, { type ECOption, useEchart } from '@/echarts'
 import { cloneDeep } from 'es-toolkit'
 
 defineOptions({
@@ -10,11 +10,15 @@ defineOptions({
 const props = defineProps<{
   /** 图表配置 */
   option: ECOption
+  /** 图表resize事件 */
+  onResize?: (chartInstance: echarts.ECharts) => void
 }>()
 
 const chartRef = useTemplateRef<HTMLElement>('chart')
 // 通过hooks初始化图表。可以自带resize、loading
-const { setOption, getInputOption, initChart } = useEchart(chartRef)
+const { setOption, getInputOption, initChart } = useEchart(chartRef, {
+  onResize: props.onResize,
+})
 
 // 渲染图表
 const render = () => {

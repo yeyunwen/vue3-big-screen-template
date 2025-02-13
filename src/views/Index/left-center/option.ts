@@ -1,20 +1,29 @@
 import { BIG, getBigFontSizeOption, type ECOption } from '@/echarts'
 import { merge } from 'es-toolkit'
+import { fitChartSize } from '@/utils'
 
-export const baseOption: ECOption = {
-  xAxis: {
-    type: 'category',
-    data: [],
-  },
-  yAxis: {
-    type: 'value',
-  },
-  series: [
-    {
+export const baseOption = (): ECOption => {
+  return {
+    xAxis: {
+      type: 'category',
       data: [],
-      type: 'line',
+      axisLabel: {
+        fontSize: fitChartSize(12),
+      },
     },
-  ],
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        fontSize: fitChartSize(12),
+      },
+    },
+    series: [
+      {
+        data: [],
+        type: 'line',
+      },
+    ],
+  }
 }
 
 export const bigOption = merge(getBigFontSizeOption(), {
