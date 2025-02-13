@@ -36,18 +36,22 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: vw(20);
   width: 100%;
   height: 100%;
   background-color: #fff;
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: vh(1) solid #e4e4e4;
+  .header-left,
+  .header-right {
+    font-size: vw(16);
+  }
 
   .header-center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 20px;
+    font-size: vw(20);
     font-weight: 600;
   }
 }

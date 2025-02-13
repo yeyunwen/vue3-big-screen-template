@@ -36,17 +36,23 @@ watch(
     <div class="main-wrapper">
       <router-view />
     </div>
-    <div v-if="showBig" :title="appStore.chartData.title" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div
+      v-if="showBig"
+      :title="appStore.chartData.title"
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)"
+    >
       <button @click="handleClose">关闭</button>
-      <div ref="bigChart" id="dialog-char" style="width: 600px; height: 500px"></div>
+      <div class="dialog-chart">
+        <div ref="bigChart" style="width: 100%; height: 100%"></div>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-$header-height: 74px;
-$main-x-padding: 20px;
-$main-top-margin: 30px;
+$header-height: vh(74);
+$main-x-padding: vw(20);
+$main-top-margin: vh(30);
 
 .default-layout {
   width: 100%;
@@ -61,6 +67,10 @@ $main-top-margin: 30px;
     width: 100%;
     height: calc(100vh - $header-height - $main-top-margin);
     overflow-y: auto;
+  }
+  .dialog-chart {
+    width: vw(600);
+    height: vh(500);
   }
 }
 </style>
