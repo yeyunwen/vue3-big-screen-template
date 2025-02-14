@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Echart from '@/components/Echart/index.vue'
-import { onMounted, ref } from 'vue'
 import { type ECOption } from '@/echarts'
 import { baseOption, bigOption } from './option'
 import { merge } from 'es-toolkit'

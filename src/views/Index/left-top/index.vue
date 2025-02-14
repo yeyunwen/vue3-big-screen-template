@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import Echart from '@/components/Echart/index.vue'
 import { onMounted, ref } from 'vue'
 import { type ECOption } from '@/echarts'
 import { baseOption, bigOption } from './option'
 import { merge } from 'es-toolkit'
 import { useShowBig } from '@/hooks/useShowBig'
-import BorderBox1 from '@/components/border-box-1/index.vue'
 
 defineOptions({
   name: 'LeftTop',
@@ -70,6 +68,7 @@ onMounted(async () => {
   <div class="left-top">
     <border-box-1 :title="title">
       <template #right>
+        <a-button type="primary" @click="clickBig">放大</a-button>
         <button @click="clickBig">放大</button>
       </template>
       <div class="chart-wrap">
