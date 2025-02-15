@@ -27,7 +27,7 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-$header-height: vw(54);
+$header-height: vh(54);
 
 .border-box1 {
   position: relative;
@@ -39,10 +39,15 @@ $header-height: vw(54);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: vw(18);
+    padding: vh(10) vw(18);
     height: $header-height;
+    overflow: hidden;
     .title {
       font-size: vw(20);
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
     }
   }
   .content-container {
