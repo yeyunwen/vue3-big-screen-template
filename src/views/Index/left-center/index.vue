@@ -1,19 +1,41 @@
 <script setup lang="ts">
-import Echart from '@/components/Echart/index.vue'
 import { onMounted, ref } from 'vue'
 import { type ECOption } from '@/echarts'
 import { baseOption, bigOption } from './option'
 import { merge } from 'es-toolkit'
 import { useShowBig } from '@/hooks/useShowBig'
+import type { SelectProps } from 'ant-design-vue'
 
 defineOptions({
-  name: 'LeftTop',
+  name: 'left-center',
 })
 type InjectData = {
   xList: string[]
   yList: number[]
 }
 
+const selectValue = ref('')
+const selectOption: SelectProps['options'] = [
+  {
+    value: 'jack',
+    label: 'Jack',
+  },
+  {
+    value: 'lucy',
+    label: 'Lucy',
+  },
+  {
+    value: 'disabled',
+    label: 'Disabled',
+    disabled: true,
+  },
+  {
+    value: 'yiminghe',
+    label: 'Yiminghe',
+  },
+]
+
+const title = 'left-center'
 const chartRef = ref()
 const chartOption = ref<ECOption>({})
 
@@ -46,7 +68,7 @@ const fetchDataApi = (): Promise<InjectData> => {
 
 const { showBig } = useShowBig({
   chartRef,
-  title: 'left-top',
+  title,
   bigOption,
 })
 
@@ -66,26 +88,27 @@ onMounted(async () => {
 
 <template>
   <div class="left-top">
-    <div class="button-wrap">
-      <button @click="clickBig">放大</button>
-    </div>
-    <div class="chart-wrap">
+    <border-box-1 :title="title">
+      <template #right>
+        <a-select
+          class="big-screen"
+          popupClassName="big-screen"
+          v-model:value="selectValue"
+          :options="selectOption"
+        ></a-select>
+        <button @click="clickBig">放大</button>
+      </template>
       <Echart ref="chartRef" :option="chartOption" :on-resize="onResize" />
-    </div>
+    </border-box-1>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .left-top {
   width: 100%;
   height: 100%;
-  .button-wrap {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .chart-wrap {
-    width: 100%;
-    height: calc(100% - 32px);
+  .big-screen {
+    width: vw(100);
   }
 }
 </style>

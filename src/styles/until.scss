@@ -15,3 +15,11 @@ $designHeight: 1080;
 @function vh($px) {
   @return math.div($px, $designHeight) * 100vh;
 }
+
+@function scale2vw($size, $default-width: $designWidth) {
+  // 计算当前视口宽度与默认宽度的比例
+  $scale: math.div(100vw, $default-width);
+
+  // 返回缩放后的尺寸
+  @return $size * $scale;
+}

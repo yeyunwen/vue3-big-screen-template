@@ -7,3 +7,54 @@
 body {
   font-size: vw(14);
 }
+
+// antd-vue 大屏样式覆盖
+// vw/vh方案
+.big-screen {
+  // button
+  &.ant-btn {
+    display: inline-flex; // 解决宽屏下字体大小变大，而高度不够时，文字无法垂直居中的问题
+    align-items: center;
+    height: vh(32);
+    padding: vh(4) vw(15);
+    font-size: vw(14);
+    border-radius: vw(6);
+  }
+
+  // select
+  &.ant-select {
+    font-size: vw(14);
+    .ant-select-selector {
+      align-items: center;
+      padding: 0 vw(11);
+      height: vh(32);
+      font-size: vw(14);
+      .ant-select-selection-search-input {
+        height: vh(30);
+      }
+      .ant-select-selection-item {
+        text-align: center;
+      }
+    }
+    .ant-select-arrow {
+      font-size: vw(12);
+    }
+  }
+
+  // select的下拉菜单
+  &.ant-select-dropdown {
+    .ant-select-item {
+      font-size: vw(14);
+    }
+  }
+}
+
+// 均用vw的方案
+.scale-2-vw {
+  &.ant-btn {
+    font-size: scale2vw(14);
+    height: scale2vw(32);
+    padding: scale2vw(4) scale2vw(15);
+    border-radius: scale2vw(6);
+  }
+}

@@ -6,14 +6,14 @@ import { merge } from 'es-toolkit'
 import { useShowBig } from '@/hooks/useShowBig'
 
 defineOptions({
-  name: 'LeftTop',
+  name: 'left-top',
 })
 type InjectData = {
   xList: string[]
   yList: number[]
 }
 
-const title = 'LeftTop'
+const title = 'left-top'
 const chartRef = ref()
 const chartOption = ref<ECOption>({})
 
@@ -68,12 +68,11 @@ onMounted(async () => {
   <div class="left-top">
     <border-box-1 :title="title">
       <template #right>
-        <a-button type="primary" @click="clickBig">放大</a-button>
+        <a-button class="big-screen">vw vh</a-button>
+        <a-button class="scale-2-vw">scale-2-vw</a-button>
         <button @click="clickBig">放大</button>
       </template>
-      <div class="chart-wrap">
-        <Echart ref="chartRef" :option="chartOption" :on-resize="onResize" />
-      </div>
+      <Echart ref="chartRef" :option="chartOption" :on-resize="onResize" />
     </border-box-1>
   </div>
 </template>
@@ -82,9 +81,5 @@ onMounted(async () => {
 .left-top {
   width: 100%;
   height: 100%;
-  .chart-wrap {
-    width: 100%;
-    height: calc(100% - 32px);
-  }
 }
 </style>

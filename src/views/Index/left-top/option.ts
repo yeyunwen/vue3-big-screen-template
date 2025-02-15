@@ -9,12 +9,14 @@ export const baseOption = (): ECOption => {
       data: [],
       axisLabel: {
         fontSize: fitChartSize(12),
+        color: '#fff',
       },
     },
     yAxis: {
       type: 'value',
       axisLabel: {
         fontSize: fitChartSize(12),
+        color: '#fff',
       },
     },
     series: [
