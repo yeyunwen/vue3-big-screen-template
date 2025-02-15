@@ -40,11 +40,88 @@ body {
       font-size: vw(12);
     }
   }
-
   // select的下拉菜单
   &.ant-select-dropdown {
     .ant-select-item {
       font-size: vw(14);
+    }
+  }
+
+  // range-picker
+  &.ant-picker {
+    padding: vh(4) vw(11) vh(4);
+    font-size: vw(14);
+    .ant-picker-input > input {
+      font-size: vw(14);
+    }
+    .ant-picker-range {
+      .ant-picker-range-separator {
+        padding: 0 vw(8);
+      }
+    }
+
+    .ant-picker-separator {
+      height: vh(16);
+      font-size: vw(16);
+    }
+  }
+  &.ant-picker-dropdown {
+    font-size: vw(14);
+    .ant-picker-date-panel {
+      width: vw(280);
+      .ant-picker-body {
+        padding: vh(8) vw(12);
+      }
+      .ant-picker-content {
+        width: vw(252);
+
+        th {
+          width: vw(36);
+          height: vh(34);
+          min-width: vw(24);
+        }
+      }
+    }
+
+    .ant-picker-header {
+      padding: 0 vw(8);
+      > button {
+        font-size: vw(14);
+      }
+      button {
+        line-height: vh(40);
+      }
+    }
+    .ant-picker-header-view {
+      line-height: vh(40);
+      button {
+        line-height: vh(40);
+      }
+    }
+    .ant-picker-cell {
+      &::before {
+        height: vh(24);
+      }
+      .ant-picker-cell-inner {
+        min-width: vw(24);
+        height: vh(24);
+        line-height: vh(24);
+      }
+    }
+    .ant-picker-prev-icon,
+    .ant-picker-prev-icon::before,
+    .ant-picker-super-prev-icon,
+    .ant-picker-super-prev-icon::before,
+    .ant-picker-super-prev-icon::after,
+    .ant-picker-next-icon,
+    .ant-picker-next-icon::before,
+    .ant-picker-super-next-icon,
+    .ant-picker-super-next-icon::before,
+    .ant-picker-super-next-icon::after {
+      width: vw(7);
+      height: vw(7);
+      border-block-start-width: vw(1.5);
+      border-inline-start-width: vw(1.5);
     }
   }
 }

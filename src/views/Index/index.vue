@@ -5,6 +5,7 @@ import LeftBottom from './left-bottom/index.vue'
 import RightTop from './right-top/index.vue'
 import RightCenter from './right-center/index.vue'
 import RightBottom from './right-bottom/index.vue'
+import CenterTop from './center-top/index.vue'
 
 defineOptions({
   name: 'Index',
@@ -24,6 +25,11 @@ defineOptions({
         <left-bottom />
       </div>
     </div>
+
+    <div class="center-warp">
+      <center-top />
+    </div>
+
     <div class="right-container">
       <div class="right-top-wrap">
         <right-top />
@@ -89,5 +95,15 @@ $right-gap: vh(10);
     height: vh(268);
     border: vw(1) solid red;
   }
+}
+
+.center-warp {
+  position: absolute;
+  top: vh(88);
+  left: 50%;
+  width: vh(480);
+  height: vh(150);
+  transform: translateX(-50%);
+  border: vw(1) solid red;
 }
 </style>
