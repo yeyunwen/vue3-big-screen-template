@@ -101,7 +101,7 @@ $right-gap: vh(10);
   position: absolute;
   top: vh(88);
   left: 50%;
-  width: vh(480);
+  width: vw(480);
   height: vh(150);
   transform: translateX(-50%);
   border: vw(1) solid red;

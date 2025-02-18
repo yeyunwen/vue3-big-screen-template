@@ -22,5 +22,10 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
+  {
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
+    },
+  },
   skipFormatting,
 ]
