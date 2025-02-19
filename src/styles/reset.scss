@@ -43,6 +43,8 @@ body {
   // select的下拉菜单
   &.ant-select-dropdown {
     .ant-select-item {
+      padding: vh(5) vw(12);
+      min-height: auto;
       font-size: vw(14);
     }
   }
