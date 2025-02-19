@@ -9,13 +9,16 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  customLeftStyle: {
+    type: Object,
+  },
 })
 </script>
 
 <template>
   <div class="border-box1">
     <div class="header-container">
-      <div class="title">{{ props.title }}</div>
+      <div class="title" :style="{ ...props.customLeftStyle }">{{ props.title }}</div>
       <div class="header-right">
         <slot name="right"></slot>
       </div>

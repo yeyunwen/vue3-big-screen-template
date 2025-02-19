@@ -88,7 +88,7 @@ onMounted(async () => {
 
 <template>
   <div class="left-top">
-    <border-box-1 :title="title">
+    <border-box-1 :title="title" :custom-left-style="{ color: '#fff' }">
       <template #right>
         <a-select
           class="big-screen"

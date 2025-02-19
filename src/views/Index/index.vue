@@ -41,6 +41,10 @@ defineOptions({
         <right-bottom />
       </div>
     </div>
+
+    <!-- <div class="map-box">
+      <gdMap :hotmap="true" :traffic="true"></gdMap>
+    </div> -->
   </div>
 </template>
 
@@ -48,6 +52,7 @@ defineOptions({
 $left: vw(20);
 $left-width: vw(480);
 $left-gap: vh(10);
+$z-index: 2;
 
 $right: vw(20);
 $right-width: vw(480);
@@ -56,6 +61,7 @@ $right-gap: vh(10);
 .left-container {
   position: absolute;
   left: $left;
+  z-index: $z-index;
   .left-top-wrap {
     margin-bottom: $left-gap;
     width: $left-width;
@@ -78,6 +84,7 @@ $right-gap: vh(10);
 .right-container {
   position: absolute;
   right: $right;
+  z-index: $z-index;
   .right-top-wrap {
     margin-bottom: $right-gap;
     width: $right-width;
@@ -101,9 +108,26 @@ $right-gap: vh(10);
   position: absolute;
   top: vh(88);
   left: 50%;
-  width: vh(480);
+  width: vw(480);
   height: vh(150);
   transform: translateX(-50%);
   border: vw(1) solid red;
+}
+
+.map-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // min-height: 1080px;
+  min-height: 1080px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  pointer-events: auto;
+  z-index: 0;
+  // padding-top: 25px;
 }
 </style>

@@ -66,7 +66,7 @@ onMounted(async () => {
 
 <template>
   <div class="left-top">
-    <border-box-1 :title="title">
+    <border-box-1 :title="title" :custom-left-style="{ color: '#fff' }">
       <template #right>
         <a-button class="big-screen">vw vh</a-button>
         <a-button class="scale-2-vw">scale-2-vw</a-button>
